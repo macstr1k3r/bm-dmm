@@ -1,0 +1,6 @@
+{
+  "name": "brymen-dmm-web",
+  "version": "1.0.0",
+  "description": "WebSerial interface for Brymen 6000-count DMM",
+  "private": true
+}

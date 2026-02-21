@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brymen DMM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Brymen 6000-count DMM</h1>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span id="status">Disconnected</span>
+      <button id="test-btn">Test (AC 513.6V)</button>
+      <button id="connect-btn">Connect</button>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="lcd-panel">
+      <div class="lcd-frame">
+        <div class="lcd-screen">
+          <svg id="lcd" viewBox="0 0 510 230" preserveAspectRatio="xMidYMid meet">
+            <!-- ====== TOP ANNUNCIATOR ROW ====== -->
+            <g id="ann-auto" class="ann-off">
+              <rect x="4" y="2" width="44" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <text x="8" y="16" font-size="13" font-weight="bold" font-family="Arial,sans-serif" fill="currentColor">AUTO</text>
+            </g>
+            <g id="ann-diode" class="ann-off">
+              <line x1="55" y1="11" x2="68" y2="11" stroke="currentColor" stroke-width="1.5"/>
+              <polygon points="65,5 65,17 73,11" fill="currentColor"/>
+              <line x1="73" y1="5" x2="73" y2="17" stroke="currentColor" stroke-width="1.5"/>
+            </g>
+            <g id="ann-buzzer" class="ann-off">
+              <polygon points="83,6 83,17 90,17 95,20 95,3 90,6" fill="currentColor"/>
+              <path d="M98,7 Q102,11 98,16" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M101,4 Q107,11 101,19" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            </g>
+            <g id="ann-dbm" class="ann-off">
+              <rect x="160" y="2" width="32" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <text x="164" y="16" font-size="11" font-weight="bold" font-family="Arial,sans-serif" fill="currentColor">A-H</text>
+            </g>
+            <text id="ann-max" class="annunciator ann-off" font-size="15" x="310" y="17">MAX</text>
+            <text id="ann-min" class="annunciator ann-off" font-size="15" x="358" y="17">MIN</text>
+
+            <!-- ====== LEFT ANNUNCIATOR COLUMN ====== -->
+            <!-- DC: three horizontal bars (two dashed, one solid) -->
+            <g id="ann-dc" class="ann-off">
+              <line x1="5" y1="32" x2="10" y2="32" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="13" y1="32" x2="18" y2="32" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="21" y1="32" x2="26" y2="32" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="5" y1="36" x2="10" y2="36" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="13" y1="36" x2="18" y2="36" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="21" y1="36" x2="26" y2="36" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="5" y1="40" x2="26" y2="40" stroke="currentColor" stroke-width="1.5"/>
+            </g>
+            <!-- AC: sine wave -->
+            <g id="ann-ac" class="ann-off">
+              <path d="M5,58 Q10,48 15,58 Q20,68 25,58" fill="none" stroke="currentColor" stroke-width="2"/>
+            </g>
+            <!-- Triangle -->
+            <g id="ann-delta" class="ann-off">
+              <polygon points="15,68 5,84 25,84" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </g>
+            <!-- Rectangle (hold indicator) -->
+            <g id="ann-bolt" class="ann-off">
+              <rect x="5" y="90" width="20" height="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </g>
+            <!-- Battery -->
+            <g id="ann-bat" class="ann-off">
+              <rect x="5" y="112" width="18" height="12" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="23" y="115" width="3" height="6" fill="currentColor"/>
+              <line x1="11" y1="115" x2="11" y2="121" stroke="currentColor" stroke-width="1.2"/>
+              <line x1="8" y1="118" x2="14" y2="118" stroke="currentColor" stroke-width="1.2"/>
+            </g>
+            <!-- LoZ -->
+            <text id="ann-loz" class="annunciator ann-off" font-size="11" font-family="Arial,sans-serif" x="5" y="142">LoZ</text>
+            <!-- COMM in box -->
+            <g id="ann-cont" class="ann-off">
+              <rect x="2" y="148" width="38" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/>
+              <text x="5" y="159" font-size="9" font-weight="bold" font-family="Arial,sans-serif" fill="currentColor">COMM</text>
+            </g>
+
+            <!-- ====== MINUS SIGN ====== -->
+            <rect id="ann-minus" class="seg-off" x="5" y="198" width="26" height="5" rx="1"/>
+
+            <!-- ====== DIGIT 1 (ox=55, oy=28) ====== -->
+            <polygon id="d1a" class="seg-off" points="65,35 72,28 110,28 117,35 110,42 72,42"/>
+            <polygon id="d1f" class="seg-off" points="62,45 69,52 69,100 62,108 55,100 55,52"/>
+            <polygon id="d1b" class="seg-off" points="120,45 127,52 127,100 120,108 113,100 113,52"/>
+            <polygon id="d1g" class="seg-off" points="65,111 72,104 110,104 117,111 110,118 72,118"/>
+            <polygon id="d1e" class="seg-off" points="62,114 69,121 69,169 62,176 55,169 55,121"/>
+            <polygon id="d1c" class="seg-off" points="120,114 127,121 127,169 120,176 113,169 113,121"/>
+            <polygon id="d1d" class="seg-off" points="65,186 72,179 110,179 117,186 110,193 72,193"/>
+            <circle id="dp1" class="dp-off" cx="139" cy="190" r="5"/>
+
+            <!-- ====== DIGIT 2 (ox=152, oy=28) ====== -->
+            <polygon id="d2a" class="seg-off" points="162,35 169,28 207,28 214,35 207,42 169,42"/>
+            <polygon id="d2f" class="seg-off" points="159,45 166,52 166,100 159,108 152,100 152,52"/>
+            <polygon id="d2b" class="seg-off" points="217,45 224,52 224,100 217,108 210,100 210,52"/>
+            <polygon id="d2g" class="seg-off" points="162,111 169,104 207,104 214,111 207,118 169,118"/>
+            <polygon id="d2e" class="seg-off" points="159,114 166,121 166,169 159,176 152,169 152,121"/>
+            <polygon id="d2c" class="seg-off" points="217,114 224,121 224,169 217,176 210,169 210,121"/>
+            <polygon id="d2d" class="seg-off" points="162,186 169,179 207,179 214,186 207,193 169,193"/>
+            <circle id="dp2" class="dp-off" cx="236" cy="190" r="5"/>
+
+            <!-- ====== DIGIT 3 (ox=249, oy=28) ====== -->
+            <polygon id="d3a" class="seg-off" points="259,35 266,28 304,28 311,35 304,42 266,42"/>
+            <polygon id="d3f" class="seg-off" points="256,45 263,52 263,100 256,108 249,100 249,52"/>
+            <polygon id="d3b" class="seg-off" points="314,45 321,52 321,100 314,108 307,100 307,52"/>
+            <polygon id="d3g" class="seg-off" points="259,111 266,104 304,104 311,111 304,118 266,118"/>
+            <polygon id="d3e" class="seg-off" points="256,114 263,121 263,169 256,176 249,169 249,121"/>
+            <polygon id="d3c" class="seg-off" points="314,114 321,121 321,169 314,176 307,169 307,121"/>
+            <polygon id="d3d" class="seg-off" points="259,186 266,179 304,179 311,186 304,193 266,193"/>
+            <circle id="dp3" class="dp-off" cx="333" cy="190" r="5"/>
+
+            <!-- ====== DIGIT 4 (ox=346, oy=28) ====== -->
+            <polygon id="d4a" class="seg-off" points="356,35 363,28 401,28 408,35 401,42 363,42"/>
+            <polygon id="d4f" class="seg-off" points="353,45 360,52 360,100 353,108 346,100 346,52"/>
+            <polygon id="d4b" class="seg-off" points="411,45 418,52 418,100 411,108 404,100 404,52"/>
+            <polygon id="d4g" class="seg-off" points="356,111 363,104 401,104 408,111 401,118 363,118"/>
+            <polygon id="d4e" class="seg-off" points="353,114 360,121 360,169 353,176 346,169 346,121"/>
+            <polygon id="d4c" class="seg-off" points="411,114 418,121 418,169 411,176 404,169 404,121"/>
+            <polygon id="d4d" class="seg-off" points="356,186 363,179 401,179 408,186 401,193 363,193"/>
+
+            <!-- ====== RIGHT UNIT COLUMN (large text) ====== -->
+            <text id="ann-vfd" class="annunciator ann-off" font-size="20" font-family="Arial,sans-serif" x="435" y="48">VFD</text>
+            <text id="ann-mega" class="annunciator ann-off" font-size="26" font-family="Arial,sans-serif" font-weight="bold" x="435" y="78">M</text>
+            <text id="ann-ohm" class="annunciator ann-off" font-size="26" font-family="Arial,sans-serif" font-weight="bold" x="458" y="78">&#x2126;</text>
+            <text id="ann-kilo" class="annunciator ann-off" font-size="24" font-family="Arial,sans-serif" font-weight="bold" x="435" y="104">k</text>
+            <text id="ann-hz" class="annunciator ann-off" font-size="22" font-family="Arial,sans-serif" font-weight="bold" x="453" y="104">Hz</text>
+            <text id="ann-nano" class="annunciator ann-off" font-size="24" font-family="Arial,sans-serif" font-weight="bold" x="435" y="130">n</text>
+            <text id="ann-farad" class="annunciator ann-off" font-size="24" font-family="Arial,sans-serif" font-weight="bold" x="453" y="130">F</text>
+            <text id="ann-micro" class="annunciator ann-off" font-size="22" font-family="Arial,sans-serif" font-weight="bold" x="435" y="156">&#x00B5;</text>
+            <text id="ann-milli" class="annunciator ann-off" font-size="24" font-family="Arial,sans-serif" font-weight="bold" x="435" y="186">m</text>
+            <text id="ann-volt" class="annunciator ann-off" font-size="26" font-family="Arial,sans-serif" font-weight="bold" x="456" y="186">V</text>
+            <text id="ann-amp" class="annunciator ann-off" font-size="26" font-family="Arial,sans-serif" font-weight="bold" x="480" y="186">A</text>
+
+            <!-- ====== BARGRAPH ====== -->
+            <g id="bargraph" opacity="0.35">
+              <rect x="40" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="48" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="56" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="64" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="72" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="80" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="88" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="96" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="104" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="112" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="120" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="128" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="136" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="144" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="152" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="160" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="168" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="176" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="184" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="192" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="200" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="208" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="216" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="224" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="232" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="240" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="248" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="256" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="264" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="272" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="280" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="288" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="296" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="304" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="312" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="320" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="328" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="336" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="344" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="352" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="360" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="368" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="376" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="384" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <rect x="392" y="208" width="6" height="12" fill="#b8ad8e"/>
+              <polygon points="402,208 402,220 412,214" fill="#b8ad8e"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="data-panel">
+      <h2>Data</h2>
+      <p class="data-placeholder">Connect to DMM to see data.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

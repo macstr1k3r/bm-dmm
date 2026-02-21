@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: #16213e;
+  border-bottom: 1px solid #0f3460;
+}
+
+header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+#connect-btn, #test-btn {
+  padding: 8px 20px;
+  background: #0f3460;
+  color: #e0e0e0;
+  border: 1px solid #533483;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#connect-btn:hover, #test-btn:hover {
+  background: #533483;
+}
+
+#connect-btn.connected {
+  background: #1a5c2a;
+  border-color: #2d8a4e;
+}
+
+#status {
+  font-size: 12px;
+  color: #888;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.lcd-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #1a1a2e;
+}
+
+.lcd-frame {
+  background: #3a3a3a;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
+  border: 2px solid #555;
+  max-width: 620px;
+  width: 100%;
+}
+
+.lcd-screen {
+  background: #c5b898;
+  border-radius: 4px;
+  padding: 8px 12px;
+  border: 1px solid #a89b78;
+}
+
+#lcd {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 580px;
+}
+
+/* SVG segment styles */
+.seg-off {
+  fill: #b8ad8e;
+  transition: fill 0.05s;
+}
+
+.seg-on {
+  fill: #1a1a1a;
+  transition: fill 0.05s;
+}
+
+.annunciator {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-weight: bold;
+  transition: fill 0.05s;
+}
+
+.ann-off {
+  fill: #b8ad8e;
+}
+
+.ann-on {
+  fill: #1a1a1a;
+}
+
+/* Group annunciators (icons with paths/rects) use currentColor */
+g.ann-off { color: #b8ad8e; }
+g.ann-on { color: #1a1a1a; }
+
+.dp-off {
+  fill: #b8ad8e;
+}
+
+.dp-on {
+  fill: #1a1a1a;
+}
+
+.data-panel {
+  flex: 1;
+  padding: 24px;
+  background: #16213e;
+  border-left: 1px solid #0f3460;
+  overflow-y: auto;
+}
+
+.data-panel h2 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #888;
+}
+
+.data-placeholder {
+  color: #555;
+  font-style: italic;
+  font-size: 14px;
+}
