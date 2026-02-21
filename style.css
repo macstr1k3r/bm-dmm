@@ -28,7 +28,7 @@ header h1 {
   color: #e0e0e0;
 }
 
-#connect-btn, #test-btn {
+#connect-btn, #test-btn, #csv-btn {
   padding: 8px 20px;
   background: #0f3460;
   color: #e0e0e0;
@@ -38,7 +38,7 @@ header h1 {
   font-size: 14px;
 }
 
-#connect-btn:hover, #test-btn:hover {
+#connect-btn:hover, #test-btn:hover, #csv-btn:hover {
   background: #533483;
 }
 
@@ -61,10 +61,19 @@ header h1 {
 .lcd-panel {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 24px;
   background: #1a1a2e;
+  overflow-y: auto;
+}
+
+.lcd-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 620px;
+  width: 100%;
 }
 
 .lcd-frame {
@@ -78,10 +87,10 @@ header h1 {
 }
 
 .lcd-screen {
-  background: #c5b898;
+  background: #eeeae4;
   border-radius: 4px;
   padding: 8px 12px;
-  border: 1px solid #a89b78;
+  border: 1px solid #d5d0c9;
 }
 
 #lcd {
@@ -93,7 +102,7 @@ header h1 {
 
 /* SVG segment styles */
 .seg-off {
-  fill: #b8ad8e;
+  fill: #ddd8d0;
   transition: fill 0.05s;
 }
 
@@ -109,7 +118,7 @@ header h1 {
 }
 
 .ann-off {
-  fill: #b8ad8e;
+  fill: #ddd8d0;
 }
 
 .ann-on {
@@ -117,15 +126,86 @@ header h1 {
 }
 
 /* Group annunciators (icons with paths/rects) use currentColor */
-g.ann-off { color: #b8ad8e; }
+g.ann-off { color: #ddd8d0; }
 g.ann-on { color: #1a1a1a; }
 
 .dp-off {
-  fill: #b8ad8e;
+  fill: #ddd8d0;
 }
 
 .dp-on {
   fill: #1a1a1a;
+}
+
+.chart-container {
+  background: #16213e;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #0f3460;
+}
+
+#chart {
+  display: block;
+  width: 100%;
+  height: 200px;
+}
+
+.chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.chart-controls button {
+  width: 32px;
+  height: 28px;
+  background: #0f3460;
+  color: #e0e0e0;
+  border: 1px solid #533483;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.chart-controls button:hover {
+  background: #533483;
+}
+
+.chart-controls input[type="range"] {
+  flex: 1;
+  accent-color: #533483;
+}
+
+.chart-y-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #888;
+}
+
+.chart-y-controls input[type="number"] {
+  width: 70px;
+  padding: 4px 6px;
+  margin-left: 4px;
+  background: #0f3460;
+  color: #e0e0e0;
+  border: 1px solid #533483;
+  border-radius: 4px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.chart-y-controls input[type="number"]:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.chart-y-controls input[type="checkbox"] {
+  accent-color: #533483;
 }
 
 .data-panel {
@@ -136,14 +216,57 @@ g.ann-on { color: #1a1a1a; }
   overflow-y: auto;
 }
 
+.log-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
 .data-panel h2 {
   font-size: 16px;
-  margin-bottom: 16px;
   color: #888;
 }
 
-.data-placeholder {
-  color: #555;
-  font-style: italic;
-  font-size: 14px;
+.log-interval {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #888;
+}
+
+.log-interval input {
+  width: 50px;
+  padding: 4px 6px;
+  background: #0f3460;
+  color: #e0e0e0;
+  border: 1px solid #533483;
+  border-radius: 4px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.log-container {
+  font-family: 'SF Mono', 'Menlo', 'Monaco', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.log-entry {
+  white-space: nowrap;
+}
+
+.log-time {
+  color: #666;
+  margin-right: 8px;
+}
+
+.log-value {
+  color: #e0e0e0;
+}
+
+.log-mode {
+  color: #888;
+  margin-left: 4px;
 }

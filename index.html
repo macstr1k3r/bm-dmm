@@ -12,12 +12,14 @@
     <div style="display:flex; align-items:center; gap:12px;">
       <span id="status">Disconnected</span>
       <button id="test-btn">Test (AC 513.6V)</button>
+      <button id="csv-btn">CSV</button>
       <button id="connect-btn">Connect</button>
     </div>
   </header>
 
   <div class="main">
     <div class="lcd-panel">
+      <div class="lcd-col">
       <div class="lcd-frame">
         <div class="lcd-screen">
           <svg id="lcd" viewBox="0 0 510 230" preserveAspectRatio="xMidYMid meet">
@@ -84,44 +86,44 @@
             <!-- ====== MINUS SIGN ====== -->
             <rect id="ann-minus" class="seg-off" x="5" y="198" width="26" height="5" rx="1"/>
 
-            <!-- ====== DIGIT 1 (ox=55, oy=28) ====== -->
-            <polygon id="d1a" class="seg-off" points="65,35 72,28 110,28 117,35 110,42 72,42"/>
-            <polygon id="d1f" class="seg-off" points="62,45 69,52 69,100 62,108 55,100 55,52"/>
-            <polygon id="d1b" class="seg-off" points="120,45 127,52 127,100 120,108 113,100 113,52"/>
-            <polygon id="d1g" class="seg-off" points="65,111 72,104 110,104 117,111 110,118 72,118"/>
-            <polygon id="d1e" class="seg-off" points="62,114 69,121 69,169 62,176 55,169 55,121"/>
-            <polygon id="d1c" class="seg-off" points="120,114 127,121 127,169 120,176 113,169 113,121"/>
-            <polygon id="d1d" class="seg-off" points="65,186 72,179 110,179 117,186 110,193 72,193"/>
+            <!-- ====== DIGIT 1 (ox=55, oy=28) T=18 G=2 ====== -->
+            <polygon id="d1a" class="seg-off" points="66,37 75,28 107,28 116,37 107,46 75,46"/>
+            <polygon id="d1f" class="seg-off" points="64,39 73,48 73,90 64,99 55,90 55,48"/>
+            <polygon id="d1b" class="seg-off" points="118,39 127,48 127,90 118,99 109,90 109,48"/>
+            <polygon id="d1g" class="seg-off" points="66,110 75,101 107,101 116,110 107,119 75,119"/>
+            <polygon id="d1e" class="seg-off" points="64,121 73,130 73,173 64,182 55,173 55,130"/>
+            <polygon id="d1c" class="seg-off" points="118,121 127,130 127,173 118,182 109,173 109,130"/>
+            <polygon id="d1d" class="seg-off" points="66,184 75,175 107,175 116,184 107,193 75,193"/>
             <circle id="dp1" class="dp-off" cx="139" cy="190" r="5"/>
 
-            <!-- ====== DIGIT 2 (ox=152, oy=28) ====== -->
-            <polygon id="d2a" class="seg-off" points="162,35 169,28 207,28 214,35 207,42 169,42"/>
-            <polygon id="d2f" class="seg-off" points="159,45 166,52 166,100 159,108 152,100 152,52"/>
-            <polygon id="d2b" class="seg-off" points="217,45 224,52 224,100 217,108 210,100 210,52"/>
-            <polygon id="d2g" class="seg-off" points="162,111 169,104 207,104 214,111 207,118 169,118"/>
-            <polygon id="d2e" class="seg-off" points="159,114 166,121 166,169 159,176 152,169 152,121"/>
-            <polygon id="d2c" class="seg-off" points="217,114 224,121 224,169 217,176 210,169 210,121"/>
-            <polygon id="d2d" class="seg-off" points="162,186 169,179 207,179 214,186 207,193 169,193"/>
+            <!-- ====== DIGIT 2 (ox=152, oy=28) T=18 G=2 ====== -->
+            <polygon id="d2a" class="seg-off" points="163,37 172,28 204,28 213,37 204,46 172,46"/>
+            <polygon id="d2f" class="seg-off" points="161,39 170,48 170,90 161,99 152,90 152,48"/>
+            <polygon id="d2b" class="seg-off" points="215,39 224,48 224,90 215,99 206,90 206,48"/>
+            <polygon id="d2g" class="seg-off" points="163,110 172,101 204,101 213,110 204,119 172,119"/>
+            <polygon id="d2e" class="seg-off" points="161,121 170,130 170,173 161,182 152,173 152,130"/>
+            <polygon id="d2c" class="seg-off" points="215,121 224,130 224,173 215,182 206,173 206,130"/>
+            <polygon id="d2d" class="seg-off" points="163,184 172,175 204,175 213,184 204,193 172,193"/>
             <circle id="dp2" class="dp-off" cx="236" cy="190" r="5"/>
 
-            <!-- ====== DIGIT 3 (ox=249, oy=28) ====== -->
-            <polygon id="d3a" class="seg-off" points="259,35 266,28 304,28 311,35 304,42 266,42"/>
-            <polygon id="d3f" class="seg-off" points="256,45 263,52 263,100 256,108 249,100 249,52"/>
-            <polygon id="d3b" class="seg-off" points="314,45 321,52 321,100 314,108 307,100 307,52"/>
-            <polygon id="d3g" class="seg-off" points="259,111 266,104 304,104 311,111 304,118 266,118"/>
-            <polygon id="d3e" class="seg-off" points="256,114 263,121 263,169 256,176 249,169 249,121"/>
-            <polygon id="d3c" class="seg-off" points="314,114 321,121 321,169 314,176 307,169 307,121"/>
-            <polygon id="d3d" class="seg-off" points="259,186 266,179 304,179 311,186 304,193 266,193"/>
+            <!-- ====== DIGIT 3 (ox=249, oy=28) T=18 G=2 ====== -->
+            <polygon id="d3a" class="seg-off" points="260,37 269,28 301,28 310,37 301,46 269,46"/>
+            <polygon id="d3f" class="seg-off" points="258,39 267,48 267,90 258,99 249,90 249,48"/>
+            <polygon id="d3b" class="seg-off" points="312,39 321,48 321,90 312,99 303,90 303,48"/>
+            <polygon id="d3g" class="seg-off" points="260,110 269,101 301,101 310,110 301,119 269,119"/>
+            <polygon id="d3e" class="seg-off" points="258,121 267,130 267,173 258,182 249,173 249,130"/>
+            <polygon id="d3c" class="seg-off" points="312,121 321,130 321,173 312,182 303,173 303,130"/>
+            <polygon id="d3d" class="seg-off" points="260,184 269,175 301,175 310,184 301,193 269,193"/>
             <circle id="dp3" class="dp-off" cx="333" cy="190" r="5"/>
 
-            <!-- ====== DIGIT 4 (ox=346, oy=28) ====== -->
-            <polygon id="d4a" class="seg-off" points="356,35 363,28 401,28 408,35 401,42 363,42"/>
-            <polygon id="d4f" class="seg-off" points="353,45 360,52 360,100 353,108 346,100 346,52"/>
-            <polygon id="d4b" class="seg-off" points="411,45 418,52 418,100 411,108 404,100 404,52"/>
-            <polygon id="d4g" class="seg-off" points="356,111 363,104 401,104 408,111 401,118 363,118"/>
-            <polygon id="d4e" class="seg-off" points="353,114 360,121 360,169 353,176 346,169 346,121"/>
-            <polygon id="d4c" class="seg-off" points="411,114 418,121 418,169 411,176 404,169 404,121"/>
-            <polygon id="d4d" class="seg-off" points="356,186 363,179 401,179 408,186 401,193 363,193"/>
+            <!-- ====== DIGIT 4 (ox=346, oy=28) T=18 G=2 ====== -->
+            <polygon id="d4a" class="seg-off" points="357,37 366,28 398,28 407,37 398,46 366,46"/>
+            <polygon id="d4f" class="seg-off" points="355,39 364,48 364,90 355,99 346,90 346,48"/>
+            <polygon id="d4b" class="seg-off" points="409,39 418,48 418,90 409,99 400,90 400,48"/>
+            <polygon id="d4g" class="seg-off" points="357,110 366,101 398,101 407,110 398,119 366,119"/>
+            <polygon id="d4e" class="seg-off" points="355,121 364,130 364,173 355,182 346,173 346,130"/>
+            <polygon id="d4c" class="seg-off" points="409,121 418,130 418,173 409,182 400,173 400,130"/>
+            <polygon id="d4d" class="seg-off" points="357,184 366,175 398,175 407,184 398,193 366,193"/>
 
             <!-- ====== RIGHT UNIT COLUMN (large text) ====== -->
             <text id="ann-vfd" class="annunciator ann-off" font-size="20" font-family="Arial,sans-serif" x="435" y="48">VFD</text>
@@ -138,61 +140,82 @@
 
             <!-- ====== BARGRAPH ====== -->
             <g id="bargraph" opacity="0.35">
-              <rect x="40" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="48" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="56" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="64" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="72" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="80" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="88" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="96" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="104" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="112" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="120" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="128" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="136" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="144" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="152" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="160" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="168" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="176" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="184" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="192" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="200" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="208" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="216" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="224" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="232" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="240" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="248" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="256" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="264" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="272" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="280" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="288" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="296" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="304" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="312" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="320" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="328" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="336" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="344" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="352" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="360" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="368" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="376" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="384" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <rect x="392" y="208" width="6" height="12" fill="#b8ad8e"/>
-              <polygon points="402,208 402,220 412,214" fill="#b8ad8e"/>
+              <rect x="40" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="48" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="56" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="64" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="72" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="80" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="88" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="96" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="104" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="112" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="120" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="128" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="136" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="144" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="152" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="160" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="168" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="176" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="184" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="192" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="200" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="208" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="216" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="224" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="232" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="240" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="248" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="256" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="264" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="272" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="280" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="288" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="296" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="304" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="312" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="320" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="328" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="336" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="344" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="352" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="360" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="368" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="376" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="384" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <rect x="392" y="208" width="6" height="12" fill="#ddd8d0"/>
+              <polygon points="402,208 402,220 412,214" fill="#ddd8d0"/>
             </g>
           </svg>
         </div>
       </div>
+      <div class="chart-container">
+        <canvas id="chart"></canvas>
+        <div class="chart-controls">
+          <button id="chart-zout">&minus;</button>
+          <input type="range" id="chart-scroll" min="0" max="1000" value="1000">
+          <button id="chart-zin">+</button>
+        </div>
+        <div class="chart-y-controls">
+          <label><input type="checkbox" id="chart-y-auto" checked> Auto Y</label>
+          <label>min <input type="number" id="chart-y-min" step="any" disabled></label>
+          <label>max <input type="number" id="chart-y-max" step="any" disabled></label>
+        </div>
+      </div>
+      </div>
     </div>
 
     <div class="data-panel">
-      <h2>Data</h2>
-      <p class="data-placeholder">Connect to DMM to see data.</p>
+      <div class="log-header">
+        <h2>Log</h2>
+        <div class="log-interval">
+          <label for="log-interval">every</label>
+          <input type="number" id="log-interval" value="1" min="1" max="3600" step="1">
+          <span>s</span>
+        </div>
+      </div>
+      <div id="log-container" class="log-container"></div>
     </div>
   </div>
 
